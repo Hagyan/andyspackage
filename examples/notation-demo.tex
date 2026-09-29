@@ -1,0 +1,38 @@
+\documentclass[11pt,twoside]{article}
+\usepackage[margin=1in,headheight=40pt]{geometry}
+\usepackage[kripke]{andyspackage}
+\usepackage[header=book,font=times]{andysnotes}
+\title{Notation Smoke Test}\author{Andrew M. Hagy}\date{}
+\begin{document}
+\setcounter{page}{0}\AndyMakeTitle
+\section{Symbols}\subsection{Representative commands}
+\[
+\parens*{\frac ab}\ \bracks{x}\ \braces{x}\ \angles{a,b}\
+\set[x\in X]{x:\varphi(x)}\
+\abs*{\frac ab}\ \norm{v}\ \ceil{x}\ \floor{x}
+\]
+\[
+\Gamma\proves\varphi,\quad\Gamma\entails\varphi,\quad
+\Str\satisfies\varphi,\quad w\forces\varphi,\quad
+\turnstile[S]{\Gamma}{\Delta}.
+\]
+\[
+A\inj B,\ A\surj B,\ A\isbij B,\ A\barbbij B,\
+A\hbij B,\ A\bij B,\ A\isoarrow B.
+\]
+\[
+\gcode{\varphi},\quad \gfloor{\varphi},\quad
+\harpvec{v},\quad\zerovec,\quad
+\MathScript{L},\MathCal{L},\MathBB{R},\MathBold{v},
+\MathRoman{Th}.
+\]
+\[
+\kripkeframe{\Worlds}{\Acc},\quad
+\kripkemodel{\Worlds}{\Acc}{V},\quad
+\kripkesucceq,\kripkesucc,\kripkepreceq,\kripkeprec,\gecurly.
+\]
+\[
+\NN,\ZZ,\QQ,\RR,\CC,\Reals,\Naturals,\FOL,\quad
+\Pow{X},\dom(f),\ran(f),\cf(\alpha),\otp(W),\restrict{f}{A}.
+\]
+\end{document}

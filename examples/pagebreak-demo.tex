@@ -1,0 +1,32 @@
+\documentclass[11pt,letterpaper,twoside]{article}
+\usepackage[margin=1in,headheight=40pt]{geometry}
+\usepackage{andyspackage}
+\usepackage[header=book,font=times,accent=purple]{andysnotes}
+\title{Box and Page Break Demonstration}
+\author{Andrew M. Hagy}
+\date{}
+\begin{document}
+\setcounter{page}{0}
+\AndyMakeTitle
+\section{Long statements}
+\subsection{Shared numbering}
+\begin{definition}A brief unboxed definition.\end{definition}
+\begin{AsideBlock}An aside in the same sequence.\end{AsideBlock}
+\begin{TheoremBlock}[A long theorem with a nested proof]
+A theorem can continue across a page. The following text intentionally
+fills enough space to test the box at a page boundary.
+
+\foreach \n in {1,...,13}{%
+This paragraph explains that every statement remains visible while the
+page builder is free to choose a break between lines. The mathematical
+content here is only a layout test. We can use $\Gamma\entails\varphi$,
+$\NN$, $\RR$, and $A\containedin B$ without adding another package.\par}
+
+\begin{ProofBlock}
+\foreach \n in {1,...,22}{%
+The proof is nested in the theorem. This line tests a page break within
+or near the proof while preserving a visible start and finish.\par}
+\end{ProofBlock}
+\end{TheoremBlock}
+\begin{CorollaryBlock}A short corollary follows its theorem.\end{CorollaryBlock}
+\end{document}
