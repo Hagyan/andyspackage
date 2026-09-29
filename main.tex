@@ -1,0 +1,76 @@
+% Copy this entire project in Overleaf; edit this file for a new document.
+\documentclass[11pt,letterpaper,twoside]{article}
+\usepackage[margin=1in,headheight=40pt]{geometry}
+
+% NOTATION: choose one line. Add prooftrees only when using bussproofs trees.
+\usepackage{andyspackage}
+% \usepackage[kripke]{andyspackage}
+% \usepackage[kripke,prooftrees]{andyspackage}
+
+% STYLE: leave exactly one of these lines uncommented.
+\usepackage[header=book,font=times,accent=purple]{andysnotes}
+% \usepackage[header=plain,font=times,accent=purple]{andysnotes}
+% \usepackage[header=none,font=times,accent=purple]{andysnotes}
+% \usepackage[header=book,font=latinmodern,accent=black,sectionrules=false]{andysnotes}
+% \usepackage[header=book,font=times,bibliography=angus]{andysnotes}
+% Add showsectionnumbers=true to print main section numbers.
+% If bibliography=angus is active, add after the selected style line:
+% \addbibresource{docs/references.bib}
+
+% GRAPHICS: uncomment only when you need figures, diagrams, or plots.
+% \usepackage{andyspics}
+
+% The title needs only these two fields.
+\title{A Working Title}
+\author{Andrew M. Hagy}
+\date{}
+% Add any fields that suit this project:
+% \AndySubtitle{A subtitle}
+% \AndyCourse{PHIL 4770}
+% \AndyAssignment{Homework 3}
+% \AndyDue{Friday, October 2, 2026}
+% \AndyAffiliation{University of Pennsylvania}
+% \AndyRunningTitle{Short title for even-page headers}
+
+\begin{document}
+\setcounter{page}{0} % change to 1 if desired
+
+\AndyMakeTitle
+% \AndyMakeTitlePage % use this INSTEAD of \AndyMakeTitle for a separate page
+% \pagenumbering{roman} % before contents if front matter uses Roman numerals
+% \tableofcontents
+% \AndyStartBodyPages % after front matter: new page, Arabic page 0
+
+\section{First section}
+Main section numbers are hidden, but the counter still runs. In particular,
+$\Gamma\entails\varphi$ means semantic consequence, while
+$\Gamma\proves\varphi$ means derivability.
+
+\subsection{A first subsection}
+This is subsection 1.1. You can write $\RR$ or $\Reals$ for the reals.
+
+\begin{DefinitionBlock}[Sample]
+A set $A$ is a subset of $B$ when $A\containedin B$.
+\end{DefinitionBlock}
+
+\begin{aside}
+An unboxed aside follows the same statement sequence.
+\end{aside}
+
+\begin{TheoremBlock}[Sample theorem]
+If $A\containedin B$ and $B\containedin C$, then $A\containedin C$.
+\begin{ProofBlock}
+Take $x\in A$. Then $x\in B$ and $x\in C$.
+\end{ProofBlock}
+\end{TheoremBlock}
+
+\begin{CorollaryBlock}
+In particular, $A\containedin A$.
+\end{CorollaryBlock}
+
+% For a short reference list without a separate file:
+% \begin{thebibliography}{9}
+% \bibitem{key} Author, \emph{Title}, publication details.
+% \end{thebibliography}
+% Or, with bibliography=angus: \printbibliography
+\end{document}

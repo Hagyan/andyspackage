@@ -1,0 +1,29 @@
+% andyspics.sty --- Andrew Hagy image/figure pack
+% 2026-02-24 v1.1
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{andyspics}[2026/09/29 v2.0 Andrew Hagy graphics]
+
+\RequirePackage{graphicx}  % images, rotatebox
+\RequirePackage{float}     % [H] placement
+\RequirePackage{subcaption}
+
+\RequirePackage{tikz}
+\usetikzlibrary{
+calc,arrows.meta,decorations.pathreplacing,
+  positioning,
+  matrix,
+  fit,
+  angles,
+  quotes
+}
+
+\RequirePackage{tikz-cd}
+
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Sensible arrow default (works with >=Stealth and >=stealth styles)
+\tikzset{>=Stealth}
+
+% End of andyspics.sty

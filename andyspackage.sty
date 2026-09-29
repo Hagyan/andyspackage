@@ -1,0 +1,313 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{andyspackage}[2026/09/29 v2.0 Andrew Hagy notation]
+
+\makeatletter
+
+% ---------- Options ----------
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=andyspackage,prefix=andyspackage@}
+\DeclareBoolOption[false]{ij}
+\DeclareBoolOption[false]{ii} % compatibility with early documents
+\DeclareBoolOption[false]{classical}
+\DeclareBoolOption[false]{kripke}
+\DeclareBoolOption[false]{prooftrees}
+\DeclareBoolOption[false]{numberedthms} % deprecated: theorem styling lives in andysnotes
+\ProcessKeyvalOptions*
+\ifandyspackage@numberedthms
+  \PackageWarning{andyspackage}{The numberedthms option is obsolete;
+    load andysnotes for numbered statement environments}%
+\fi
+
+% ---------- Core packages ----------
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{xparse}
+\RequirePackage{microtype}
+
+% Proof trees are optional so ordinary notes do not need bussproofs.
+\ifandyspackage@prooftrees
+  \RequirePackage{bussproofs}
+  \EnableBpAbbreviations
+\fi
+
+% graphics helpers (needed for \hbij implementation)
+\RequirePackage{graphicx}
+
+% accents (needed for \accentset in \harpvec)
+\IfFileExists{accents.sty}{\RequirePackage{accents}}{}
+
+% Gödel/Tarski corners
+\IfFileExists{stmaryrd.sty}{\RequirePackage{stmaryrd}}{}
+
+% ---------- Mild bussproofs spacing tweaks ----------
+\ifandyspackage@prooftrees
+  \def\defaultHypSeparation{\hskip .8em}
+  \def\defaultTopSkip{.5em}
+  \def\defaultBottomSkip{.5em}
+\fi
+
+% ---------- Mathtools paired delimiters ----------
+\DeclarePairedDelimiter\parens{(}{)}
+\DeclarePairedDelimiter\bracks{[}{]}
+\DeclarePairedDelimiter\braces{\{}\}
+\DeclarePairedDelimiter\angles{\langle}{\rangle}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Set-builder: \set{a,b} or \set[x\in X]{x : \varphi(x)}
+\NewDocumentCommand{\set}{ O{} m }{%
+  \if\relax\detokenize{#1}\relax
+    \braces*{#2}%
+  \else
+    \braces*{\,#2 \;\middle|\; #1\,}%
+  \fi
+}
+
+% ---------- Logic relations ----------
+\NewDocumentCommand{\proves}{ }{\mathrel{\vdash}}
+\NewDocumentCommand{\notproves}{ }{\mathrel{\nvdash}}
+\NewDocumentCommand{\entails}{ }{\mathrel{\vDash}}
+\NewDocumentCommand{\notentails}{ }{\mathrel{\nvDash}}
+\NewDocumentCommand{\satisfies}{ }{\mathrel{\models}}
+\NewDocumentCommand{\notsatisfies}{ }{\mathrel{\not\models}}
+\NewDocumentCommand{\forces}{ }{\mathrel{\Vdash}}
+\NewDocumentCommand{\notforces}{ }{\mathrel{\nVdash}}
+\newcommand{\contradiction}{\bot}
+\newcommand{\impliesbottom}{\Longrightarrow\bot}
+\newcommand{\impliesbot}{\Longrightarrow\bot}
+\newcommand{\bottom}{\bot}
+\newcommand{\yippee}{\top}
+
+% Forcing with a poset subscript: \forcesP{P}{p}{\varphi} -> p \Vdash_P \varphi
+\NewDocumentCommand{\forcesP}{m m m}{#2 \Vdash_{#1} #3}
+
+% Labeled turnstile: \turnstile[\mathsf{S}]{\Gamma}{\Delta}
+\NewDocumentCommand{\turnstile}{ O{} m m }{#2 \mathrel{\vdash_{#1}} #3}
+% Sequent turnstile (used in bussproofs examples)
+\providecommand{\fCenter}{\mathrel{\vdash}}
+
+% ---------- Common metavariables ----------
+\NewDocumentCommand{\Var}{ }{\mathcal{V}}
+\NewDocumentCommand{\Frm}{ }{\mathcal{F}}
+\NewDocumentCommand{\Str}{ }{\mathcal{M}}
+\NewDocumentCommand{\Lang}{ }{\mathcal{L}}
+\NewDocumentCommand{\Th}{ }{\mathrm{Th}}
+
+% ---------- Arrows / maps ----------
+\newcommand{\inj}{\rightarrowtail}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\incl}{\hookrightarrow}
+\newcommand{\notincl}{\mathrel{\not\!\incl}}
+
+% isomorphism arrow
+\newcommand{\isoarrow}{\xrightarrow{\sim}}
+
+% Garden variety “bijection exists” arrow (your convention)
+\newcommand{\bij}{\leftrightarrow}
+
+%Consistent Bijection, as defined as injection + Surjection: 
+% Consistent bijection arrow: surjection + injection (tail + two heads)
+% (TeXLive/Overleaf do not define \twoheadrightarrowtail by default.)
+\newcommand{\isbij}{\mathrel{\rightarrowtail\mkern-14.75mu\twoheadrightarrow}}
+
+% Logical iff arrow (avoid \iff which is already defined by TeX)
+\newcommand{\iffarrow}{\Longleftrightarrow}
+
+% Barbed bijection to show inclusion (stacked hook + twohead arrow)
+\newcommand{\barbbij}{%
+  \mathrel{\mathrlap{\hookrightarrow}}\mathrel{\mkern4.5mu\twoheadrightarrow}%
+}
+\newcommand{\notbarbbij}{\mathrel{\not\!\barbbij}}
+
+% Hooked left-right arrows public name: \hbij
+\newcommand{\hbij}{%
+  \mathrel{\mathpalette\hookleftrightarrows@{2}}%
+}
+\newcommand{\hookleftrightarrows@}[2]{%
+  \vcenter{%
+    \offinterlineskip\m@th
+    \sbox\z@{$#1\mkern#2mu$}%
+    \ialign{##\cr
+      $#1\mkern1mu\hookrightarrow$\cr
+      \noalign{\kern-\wd\z@}%
+      \rotatebox[origin=C]{180}{$#1\mkern1mu\hookrightarrow$}\cr
+    }%
+  }%
+}
+
+% ---------- Gödel/Tarski coding corners ----------
+\NewDocumentCommand{\gcode}{m}{\ulcorner #1\urcorner}
+\NewDocumentCommand{\gcodel}{ }{\ulcorner}
+\NewDocumentCommand{\gcoder}{ }{\urcorner}
+\NewDocumentCommand{\gfloor}{m}{\llcorner #1\lrcorner}
+\NewDocumentCommand{\tarski}{m}{\gcode{#1}}
+
+% ---------- Vectors ----------
+\@ifpackageloaded{accents}
+  {\newcommand{\harpvec}[1]{\accentset{\rightharpoonup}{#1}}}
+  {\newcommand{\harpvec}[1]{\overset{\rightharpoonup}{#1}}}
+\newcommand{\zerovec}{\harpvec{\mathbf{0}}}
+
+% ---------- Kripke helpers (enabled by [kripke] or [ij]) ----------
+\newif\ifandyspackage@enablekripke
+\ifandyspackage@kripke\andyspackage@enablekripketrue\fi
+\ifandyspackage@ij\andyspackage@enablekripketrue\fi
+\ifandyspackage@ii\andyspackage@enablekripketrue\fi
+
+% Chevrons for tuples/structures (always available)
+\NewDocumentCommand{\tuple}{m}{\angles*{#1}}
+\NewDocumentCommand{\struc}{m}{\angles*{#1}}
+
+% Explicit names avoid confusing accessibility with Peano successor S.
+\newcommand{\kripkesucceq}{\succeq}
+\newcommand{\kripkesucc}{\succ}
+\newcommand{\kripkepreceq}{\preceq}
+\newcommand{\kripkeprec}{\prec}
+
+\ifandyspackage@enablekripke
+  \NewDocumentCommand{\Worlds}{ }{\mathcal{W}}
+  \NewDocumentCommand{\Acc}{ }{\kripkesucceq}
+  \NewDocumentCommand{\Frame}{ }{\mathcal{F}}
+  \NewDocumentCommand{\Model}{ }{\mathcal{M}}
+  \NewDocumentCommand{\kripkeframe}{m m}{\angles*{#1,#2}}
+  \NewDocumentCommand{\kripkemodel}{m m m}{\angles*{#1,#2,#3}}
+  \NewDocumentCommand{\KripkeLegend}{ }{%
+    \par\noindent\footnotesize
+    \textbf{Kripke:} frame $\kripkeframe{\Worlds}{\Acc}$, model $\kripkemodel{\Worlds}{\Acc}{V}$, and $w\forces\varphi$ monotone wrt.\ $\Acc$.\par
+  }
+\else
+  \NewDocumentCommand{\KripkeLegend}{ }{}
+\fi
+
+
+% ---------- Kripke / preorder relation glyphs ----------
+
+% strict part
+\newcommand{\AccS}{\kripkesucc}
+
+% converse (sometimes handy)
+\newcommand{\AccInv}{\kripkepreceq}
+\newcommand{\AccInvS}{\kripkeprec}
+
+% Optional: a "slanted ≥" if you literally want ≥ but prettier
+\newcommand{\gecurly}{\geqslant}
+
+
+% ---------- LJ (Gentzen) rule shorthands ----------
+% Available with \usepackage[prooftrees]{andyspackage}.
+\ifandyspackage@prooftrees
+\newcommand{\rlabel}[1]{\RightLabel{\scriptsize #1}}
+
+\newcommand{\WeakL}{\rlabel{(Weak L)}\UnaryInfC}
+\newcommand{\WeakR}{\rlabel{(Weak R)}\UnaryInfC}
+\newcommand{\ContrL}{\rlabel{(Contr L)}\UnaryInfC}
+\newcommand{\ContrR}{\rlabel{(Contr R)}\UnaryInfC}
+\newcommand{\ExchL}{\rlabel{(Exch L)}\UnaryInfC}
+\newcommand{\ExchR}{\rlabel{(Exch R)}\UnaryInfC}
+\newcommand{\Cut}{\rlabel{(Cut)}\BinaryInfC}
+
+\newcommand{\ImpR}{\rlabel{$(\to\mathrm{R})$}\UnaryInfC}
+\newcommand{\ImpL}{\rlabel{$(\to\mathrm{L})$}\BinaryInfC}
+\newcommand{\AndR}{\rlabel{$(\wedge\mathrm{R})$}\BinaryInfC}
+\newcommand{\AndL}{\rlabel{$(\wedge\mathrm{L})$}\UnaryInfC}
+\newcommand{\OrRone}{\rlabel{$(\vee\mathrm{R}\!1)$}\UnaryInfC}
+\newcommand{\OrRtwo}{\rlabel{$(\vee\mathrm{R}\!2)$}\UnaryInfC}
+\newcommand{\OrL}{\rlabel{$(\vee\mathrm{L})$}\BinaryInfC}
+\newcommand{\NegR}{\rlabel{$(\neg\mathrm{R})$}\UnaryInfC}
+\newcommand{\NegL}{\rlabel{$(\neg\mathrm{L})$}\UnaryInfC}
+\newcommand{\TopR}{\rlabel{$(\top\mathrm{R})$}\UnaryInfC}
+\newcommand{\BotL}{\rlabel{$(\bot\mathrm{L})$}\UnaryInfC}
+
+\newcommand{\AllR}{\rlabel{$(\forall\mathrm{R})$}\UnaryInfC}
+\newcommand{\AllL}{\rlabel{$(\forall\mathrm{L})$}\UnaryInfC}
+\newcommand{\ExR}{\rlabel{$(\exists\mathrm{R})$}\UnaryInfC}
+\newcommand{\ExL}{\rlabel{$(\exists\mathrm{L})$}\UnaryInfC}
+\fi
+
+% ---------- Section helper ----------
+\newcommand{\LogicLegend}{%
+  \par\noindent\footnotesize
+  $\Gamma \proves \varphi$ (syntactic),\ 
+  $\Gamma \entails \varphi$ (semantic),\ 
+  $\Str \satisfies \varphi$ (single model),\ 
+  $w \forces \varphi$ (Kripke forcing).\par
+}
+\ifandyspackage@ij
+  \newcommand{\IJSection}[1]{\section{#1}\KripkeLegend\LogicLegend}
+\else
+  \newcommand{\IJSection}[1]{\section{#1}}
+\fi
+
+% Theorem counters, title layout, and boxed variants live in andysnotes.
+
+% ---------- Blackboard bold (double-letter only) ----------
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\AAA}{\mathbb{A}}
+\newcommand{\BBB}{\mathbb{B}}
+\newcommand{\SSS}{\mathbb{S}}
+\newcommand{\XXX}{\mathbb{X}}
+\newcommand{\Reals}{\RR}
+\newcommand{\Naturals}{\NN}
+\newcommand{\Integers}{\ZZ}
+\newcommand{\Rationals}{\QQ}
+\newcommand{\Complexes}{\CC}
+
+% General alphabet selectors leave room for future handwritten glyphs.
+\NewDocumentCommand{\MathCal}{m}{\mathcal{#1}}
+\NewDocumentCommand{\MathBB}{m}{\mathbb{#1}}
+\NewDocumentCommand{\MathBold}{m}{\mathbf{#1}}
+\NewDocumentCommand{\MathRoman}{m}{\mathrm{#1}}
+\IfFileExists{mathrsfs.sty}{%
+  \RequirePackage{mathrsfs}\let\andy@script\mathscr
+}{\let\andy@script\mathcal}
+\NewDocumentCommand{\MathScript}{m}{\andy@script{#1}}
+
+% Common model-theory and syntax shorthands.
+\newcommand{\FOL}{\mathrm{FOL}}
+\NewDocumentCommand{\restrict}{m m}{#1\!\upharpoonright_{#2}}
+
+% ---------- Set theory operators (optional but common) ----------
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\field}{field}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\TC}{TC}
+\DeclareMathOperator{\cf}{cf}
+\DeclareMathOperator{\otp}{otp}
+\newcommand{\Ord}{\mathrm{Ord}}
+\NewDocumentCommand{\Pow}{m}{\mathcal{P}\!\parens*{#1}}
+\newcommand{\Mod}{\operatorname{Mod}}
+
+% ---------- Subset relations ----------
+\newcommand{\containedin}{\subseteq}
+\newcommand{\propcontainedin}{\subset}
+\newcommand{\emphpropcontainedin}{\subsetneq}
+\newcommand{\notcontainedin}{\nsubseteq}
+% Not proper subset (amssymb does not define \nsubset)
+\newcommand{\notpropcontainedin}{\mathrel{\not\subset}}
+%now for superset relations 
+\newcommand{\containedby}{\supseteq}
+\newcommand{\propcontainedby}{\supset}
+\newcommand{\emphpropcontainedby}{\supsetneq}
+\newcommand{\notcontainedby}{\nsupseteq}
+\newcommand{\notpropcontainedby}{\mathrel{\not\supset}}
+
+\newcommand{\isoto}{\cong}
+\newcommand{\belongsto}{\in}
+\newcommand{\aand}{\land}
+\newcommand{\conjunction}{\land}
+\newcommand{\oor}{\lor}
+\newcommand{\disjunction}{\lor}
+\newcommand{\notexists}{\nexists}
+
+
+\makeatother
+% End of andyspackage.sty
