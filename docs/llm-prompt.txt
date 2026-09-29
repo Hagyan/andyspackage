@@ -1,0 +1,21 @@
+Typeset my handwritten mathematics and logic notes as a LaTeX handout for
+Overleaf. This project contains andyspackage.sty and andysnotes.sty. Load
+andyspackage before andysnotes; enable the [kripke] option only for Kripke
+helpers and [prooftrees] only for bussproofs derivations. Load andyspics only
+if a figure, diagram, or plot needs it.
+
+Use commands actually defined in andyspackage wherever they fit. For
+semantic consequence write \Gamma\entails\varphi; for truth in a structure
+write \Str\satisfies\varphi; for syntactic derivability write
+\Gamma\proves\varphi; for Kripke forcing write w\forces\varphi. Use
+\NN, \ZZ, \QQ, \RR, \CC for number systems, and \tuple, \struc, \set
+when appropriate. Prefer these aliases to bare \vDash, \models, \vdash,
+or \mathbb{R}; use ordinary LaTeX if no custom command exists. Never
+invent a package command. Consult docs/cheatsheet.md for the command list.
+
+Preserve the order and mathematical claims in the notes. Mark illegible
+writing in source comments beginning "% UNCLEAR:" and list ambiguities
+after the complete main.tex. Do not silently repair a proof or change a
+definition. Use an ordinary proof environment for long proofs, or
+ProofBlock for a proof nested in a boxed statement so pages can break.
+Return the complete main.tex and a brief list of required project files.

@@ -1,0 +1,172 @@
+Delimiters|\parens{x}|(x)|\left(x\right)|parentheses
+Delimiters|\bracks{x}|[x]|\left[x\right]|square brackets
+Delimiters|\braces{x}|\{x\}|\left\{x\right\}|braces
+Delimiters|\angles{x}|\langle x\rangle|\left\langle x\right\rangle|angle brackets
+Delimiters|\abs{x}|\lvert x\rvert|\lvert x\rvert|absolute value
+Delimiters|\norm{x}|\lVert x\rVert|\lVert x\rVert|norm
+Delimiters|\ceil{x}|\lceil x\rceil|\left\lceil x\right\rceil|ceiling
+Delimiters|\floor{x}|\lfloor x\rfloor|\left\lfloor x\right\rfloor|floor
+Delimiters|\set{x,y}|\{x,y\}|\left\{x,y\right\}|set
+Logic|\proves|\vdash|\vdash|syntactic derivability
+Logic|\notproves|\nvdash|\nvdash|non-derivability
+Logic|\entails|\vDash|\vDash|semantic consequence
+Logic|\notentails|\nvDash|\nvDash|non-entailment
+Logic|\satisfies|\models|\models|truth in one structure
+Logic|\notsatisfies|\not\models|\not\models|non-satisfaction
+Logic|\forces|\Vdash|\Vdash|forcing
+Logic|\notforces|\nVdash|\nVdash|non-forcing
+Logic|\contradiction|\bot|\bot|contradiction
+Logic|\impliesbottom|\Longrightarrow\bot|\Longrightarrow\bot|implication to bottom
+Logic|\impliesbot|\Longrightarrow\bot|\Longrightarrow\bot|alias
+Logic|\bottom|\bot|\bot|bottom
+Logic|\yippee|\top|\top|top
+Logic|\forcesP{P}{p}{\varphi}|p\Vdash_P\varphi|p\Vdash_P\varphi|forcing indexed by poset
+Logic|\turnstile[S]{\Gamma}{\Delta}|\Gamma\vdash_S\Delta|\Gamma\vdash_S\Delta|labeled sequent
+Logic|\fCenter|\vdash|\vdash|bussproofs center symbol
+Metavariables|\Var|\mathcal{V}|\mathcal{V}|variables
+Metavariables|\Frm|\mathcal{F}|\mathcal{F}|formulas
+Metavariables|\Str|\mathcal{M}|\mathcal{M}|structure
+Metavariables|\Lang|\mathcal{L}|\mathcal{L}|language
+Metavariables|\Th|\mathrm{Th}|\mathrm{Th}|theory
+Maps and arrows|\inj|\rightarrowtail|\rightarrowtail|injection
+Maps and arrows|\surj|\twoheadrightarrow|\twoheadrightarrow|surjection
+Maps and arrows|\incl|\hookrightarrow|\hookrightarrow|inclusion map
+Maps and arrows|\notincl|\not\hookrightarrow|\not\hookrightarrow|not inclusion map
+Maps and arrows|\isoarrow|\xrightarrow{\sim}|\xrightarrow{\sim}|isomorphism arrow
+Maps and arrows|\bij|\leftrightarrow|\leftrightarrow|bijection-exists convention
+Maps and arrows|\isbij|\rightarrowtail\!\twoheadrightarrow|\rightarrowtail\mkern-14.75mu\twoheadrightarrow|composite bijection arrow
+Maps and arrows|\iffarrow|\Longleftrightarrow|\Longleftrightarrow|logical iff
+Maps and arrows|\barbbij|\hookrightarrow\!\twoheadrightarrow|\mathrlap{\hookrightarrow}\mkern4.5mu\twoheadrightarrow|barbed bijection
+Maps and arrows|\notbarbbij|\not\hookrightarrow\!\twoheadrightarrow|\not\!(\mathrlap{\hookrightarrow}\mkern4.5mu\twoheadrightarrow)|negated barbed bijection
+Maps and arrows|\hbij|\leftrightarrow|\rotatebox{180}{\hookrightarrow}\ \hookrightarrow|hooked two-way arrow
+Coding and vectors|\gcode{\varphi}|\ulcorner\varphi\urcorner|\ulcorner\varphi\urcorner|Gödel corners
+Coding and vectors|\gcodel|\ulcorner|\ulcorner|left corner
+Coding and vectors|\gcoder|\urcorner|\urcorner|right corner
+Coding and vectors|\gfloor{\varphi}|\llcorner\varphi\lrcorner|\llcorner\varphi\lrcorner|lower corners
+Coding and vectors|\tarski{\varphi}|\ulcorner\varphi\urcorner|\ulcorner\varphi\urcorner|coding alias
+Coding and vectors|\harpvec{v}|\overset{\rightharpoonup}{v}|\accentset{\rightharpoonup}{v}|harpoon vector
+Coding and vectors|\zerovec|\overset{\rightharpoonup}{\mathbf0}|\accentset{\rightharpoonup}{\mathbf0}|zero vector
+Kripke and structures|\tuple{a,b}|\langle a,b\rangle|\langle a,b\rangle|tuple
+Kripke and structures|\struc{A,R}|\langle A,R\rangle|\langle A,R\rangle|structure
+Kripke and structures|\kripkesucceq|\succeq|\succeq|accessibility orientation
+Kripke and structures|\kripkesucc|\succ|\succ|strict accessibility
+Kripke and structures|\kripkepreceq|\preceq|\preceq|converse
+Kripke and structures|\kripkeprec|\prec|\prec|strict converse
+Kripke and structures|\Worlds|\mathcal W|\mathcal W|worlds; kripke option
+Kripke and structures|\Acc|\succeq|\succeq|legacy alias; kripke option
+Kripke and structures|\Frame|\mathcal F|\mathcal F|frame; kripke option
+Kripke and structures|\Model|\mathcal M|\mathcal M|model; kripke option
+Kripke and structures|\kripkeframe{W}{R}|\langle W,R\rangle|\langle W,R\rangle|frame; kripke option
+Kripke and structures|\kripkemodel{W}{R}{V}|\langle W,R,V\rangle|\langle W,R,V\rangle|model; kripke option
+Kripke and structures|\AccS|\succ|\succ|strict legacy alias
+Kripke and structures|\AccInv|\preceq|\preceq|converse legacy alias
+Kripke and structures|\AccInvS|\prec|\prec|strict converse legacy alias
+Kripke and structures|\gecurly|\geqslant|\geqslant|slanted greater-or-equal
+Blackboard bold|\NN|\mathbb N|\mathbb N|naturals
+Blackboard bold|\ZZ|\mathbb Z|\mathbb Z|integers
+Blackboard bold|\QQ|\mathbb Q|\mathbb Q|rationals
+Blackboard bold|\RR|\mathbb R|\mathbb R|reals
+Blackboard bold|\CC|\mathbb C|\mathbb C|complex numbers
+Blackboard bold|\FF|\mathbb F|\mathbb F|field
+Blackboard bold|\PP|\mathbb P|\mathbb P|context-dependent P
+Blackboard bold|\AAA|\mathbb A|\mathbb A|blackboard A
+Blackboard bold|\BBB|\mathbb B|\mathbb B|blackboard B
+Blackboard bold|\SSS|\mathbb S|\mathbb S|blackboard S
+Blackboard bold|\XXX|\mathbb X|\mathbb X|blackboard X
+Blackboard bold|\Reals|\mathbb R|\mathbb R|verbose alias
+Blackboard bold|\Naturals|\mathbb N|\mathbb N|verbose alias
+Blackboard bold|\Integers|\mathbb Z|\mathbb Z|verbose alias
+Blackboard bold|\Rationals|\mathbb Q|\mathbb Q|verbose alias
+Blackboard bold|\Complexes|\mathbb C|\mathbb C|verbose alias
+Alphabets|\MathCal{L}|\mathcal L|\mathcal L|calligraphic
+Alphabets|\MathBB{R}|\mathbb R|\mathbb R|blackboard bold
+Alphabets|\MathBold{v}|\mathbf v|\mathbf v|bold
+Alphabets|\MathRoman{Th}|\mathrm{Th}|\mathrm{Th}|upright
+Alphabets|\MathScript{L}|\mathscr L|\mathscr L|script; fallback calligraphic
+Model and set theory|\FOL|\mathrm{FOL}|\mathrm{FOL}|first-order logic
+Model and set theory|\restrict{f}{A}|f\upharpoonright_A|f\!\upharpoonright_A|restriction
+Model and set theory|\dom|\operatorname{dom}|\operatorname{dom}|domain
+Model and set theory|\ran|\operatorname{ran}|\operatorname{ran}|range
+Model and set theory|\field|\operatorname{field}|\operatorname{field}|field
+Model and set theory|\rank|\operatorname{rank}|\operatorname{rank}|rank
+Model and set theory|\TC|\operatorname{TC}|\operatorname{TC}|transitive closure
+Model and set theory|\cf|\operatorname{cf}|\operatorname{cf}|cofinality
+Model and set theory|\otp|\operatorname{otp}|\operatorname{otp}|order type
+Model and set theory|\Ord|\mathrm{Ord}|\mathrm{Ord}|ordinals
+Model and set theory|\Pow{X}|\mathcal P(X)|\mathcal P\!\left(X\right)|power set
+Model and set theory|\Mod|\operatorname{Mod}|\operatorname{Mod}|models operator
+Relations|\containedin|\subseteq|\subseteq|subset or equal
+Relations|\propcontainedin|\subset|\subset|author-dependent proper subset
+Relations|\emphpropcontainedin|\subsetneq|\subsetneq|unambiguous proper subset
+Relations|\notcontainedin|\nsubseteq|\nsubseteq|not subset or equal
+Relations|\notpropcontainedin|\not\subset|\not\subset|not proper subset
+Relations|\containedby|\supseteq|\supseteq|superset or equal
+Relations|\propcontainedby|\supset|\supset|author-dependent proper superset
+Relations|\emphpropcontainedby|\supsetneq|\supsetneq|unambiguous proper superset
+Relations|\notcontainedby|\nsupseteq|\nsupseteq|not superset or equal
+Relations|\notpropcontainedby|\not\supset|\not\supset|not proper superset
+Relations|\isoto|\cong|\cong|isomorphic
+Relations|\belongsto|\in|\in|membership
+Relations|\aand|\land|\land|conjunction
+Relations|\conjunction|\land|\land|conjunction alias
+Relations|\oor|\lor|\lor|disjunction
+Relations|\disjunction|\lor|\lor|disjunction alias
+Relations|\notexists|\nexists|\nexists|nonexistence
+Proof trees|\rlabel{Cut}|rule label|\RightLabel{\scriptsize Cut}|rule label helper; prooftrees option
+Proof trees|\WeakL{A}|rule|\RightLabel{\scriptsize(Weak L)}\UnaryInfC{A}|weakening left
+Proof trees|\WeakR{A}|rule|\RightLabel{\scriptsize(Weak R)}\UnaryInfC{A}|weakening right
+Proof trees|\ContrL{A}|rule|\RightLabel{\scriptsize(Contr L)}\UnaryInfC{A}|contraction left
+Proof trees|\ContrR{A}|rule|\RightLabel{\scriptsize(Contr R)}\UnaryInfC{A}|contraction right
+Proof trees|\ExchL{A}|rule|\RightLabel{\scriptsize(Exch L)}\UnaryInfC{A}|exchange left
+Proof trees|\ExchR{A}|rule|\RightLabel{\scriptsize(Exch R)}\UnaryInfC{A}|exchange right
+Proof trees|\Cut{A}|rule|\RightLabel{\scriptsize(Cut)}\BinaryInfC{A}|cut
+Proof trees|\ImpR{A}|rule|\RightLabel{\scriptsize($\to$R)}\UnaryInfC{A}|implication right
+Proof trees|\ImpL{A}|rule|\RightLabel{\scriptsize($\to$L)}\BinaryInfC{A}|implication left
+Proof trees|\AndR{A}|rule|\RightLabel{\scriptsize($\wedge$R)}\BinaryInfC{A}|and right
+Proof trees|\AndL{A}|rule|\RightLabel{\scriptsize($\wedge$L)}\UnaryInfC{A}|and left
+Proof trees|\OrRone{A}|rule|\RightLabel{\scriptsize($\vee$R1)}\UnaryInfC{A}|or right 1
+Proof trees|\OrRtwo{A}|rule|\RightLabel{\scriptsize($\vee$R2)}\UnaryInfC{A}|or right 2
+Proof trees|\OrL{A}|rule|\RightLabel{\scriptsize($\vee$L)}\BinaryInfC{A}|or left
+Proof trees|\NegR{A}|rule|\RightLabel{\scriptsize($\neg$R)}\UnaryInfC{A}|negation right
+Proof trees|\NegL{A}|rule|\RightLabel{\scriptsize($\neg$L)}\UnaryInfC{A}|negation left
+Proof trees|\TopR{A}|rule|\RightLabel{\scriptsize($\top$R)}\UnaryInfC{A}|top right
+Proof trees|\BotL{A}|rule|\RightLabel{\scriptsize($\bot$L)}\UnaryInfC{A}|bottom left
+Proof trees|\AllR{A}|rule|\RightLabel{\scriptsize($\forall$R)}\UnaryInfC{A}|forall right
+Proof trees|\AllL{A}|rule|\RightLabel{\scriptsize($\forall$L)}\UnaryInfC{A}|forall left
+Proof trees|\ExR{A}|rule|\RightLabel{\scriptsize($\exists$R)}\UnaryInfC{A}|exists right
+Proof trees|\ExL{A}|rule|\RightLabel{\scriptsize($\exists$L)}\UnaryInfC{A}|exists left
+Document helpers|\LogicLegend|text|\Gamma\vdash\varphi; \Gamma\vDash\varphi|insert relation legend
+Document helpers|\KripkeLegend|text|manual explanatory paragraph|insert Kripke legend; kripke option
+Document helpers|\IJSection{Heading}|heading|\section{Heading} plus legends|section with optional legends
+Formatting|\AndyMakeTitle|title|manual center environment|flexible inline title
+Formatting|\AndyMakeTitlePage|title page|titlepage environment|separate title page
+Formatting|\AndyStartBodyPages|page 0|\clearpage\pagenumbering{arabic}\setcounter{page}{0}|body pagination
+Formatting|\AndySubtitle{Text}|metadata|manual title text|optional subtitle
+Formatting|\AndyCourse{Text}|metadata|manual title text|optional course
+Formatting|\AndyAssignment{Text}|metadata|manual title text|optional assignment
+Formatting|\AndyDue{Text}|metadata|manual title text|optional due date
+Formatting|\AndyAffiliation{Text}|metadata|manual title text|optional affiliation
+Formatting|\AndyTitle[]{A}{1}{Title}{Due}{Name}|title|manual center environment|legacy six-argument title
+Formatting|\WLoG|WLOG|\textsc{wlog}|without loss of generality
+Formatting|\WTS|WTS|\textsc{wts}|want to show
+Formatting|\WRT|WRT|\textsc{wrt}|with respect to
+Formatting|\SFSoC|SFSoC|\textsc{sfsoc}|suppose for sake of contradiction
+Formatting|\DearFriends{Name}{Text}|drop cap|lettrine and calligra|letter opening
+Formatting|\AndyRunningTitle{Short title}|header|fancyhdr running head|optional even-page short title
+Environments|definition / DefinitionBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|lemma / LemmaBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|proposition / PropositionBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|claim / ClaimBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|example / ExampleBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|chaff / ChaffBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|aside / AsideBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|theorem / TheoremBlock|statement|amsthm newtheorem / breakable tcolorbox|separate theorem counter
+Environments|conjecture / ConjectureBlock|statement|amsthm newtheorem / breakable tcolorbox|separate conjecture counter
+Environments|corollary / CorollaryBlock|statement|amsthm newtheorem / breakable tcolorbox|roman under theorem
+Environments|proof / ProofBlock|proof|amsthm proof / thin separators|page-break-friendly
+Environments|remark / RemarkBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|note / NoteBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|exercise / ExerciseBlock|statement|amsthm newtheorem / breakable tcolorbox|shared subsection counter
+Environments|ntheorem / nlemma / ndefinition|statement|theorem / lemma / definition|legacy aliases
+Environments|nproposition / ncorollary / nremark|statement|proposition / corollary / remark|legacy aliases
+Environments|nchaff / naside / nclaim|statement|chaff / aside / claim|legacy aliases

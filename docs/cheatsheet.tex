@@ -1,0 +1,559 @@
+\documentclass[9pt,letterpaper,twoside]{extarticle}
+\usepackage[margin=.68in,headheight=40pt]{geometry}
+\usepackage[kripke]{andyspackage}
+\usepackage[header=book,font=times,accent=purple]{andysnotes}
+\usepackage{longtable}
+\usepackage{xurl}
+\title{Andy's Package}
+\AndySubtitle{Command cheat sheet}
+\author{Andrew M. Hagy}
+\date{}
+\begin{document}
+\setcounter{page}{0}
+\AndyMakeTitle
+\small
+The printed column shows the symbol. The two source columns show how to
+type it with and without the package. Commands marked as optional need
+their named package option. For an LLM transcription prompt, copy
+\path{docs/llm-prompt.txt}; it is printed in the quick-start guide.
+\par\medskip
+\section{Delimiters}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$(x)$ & \texttt{\detokenize{\parens{x}}} & \texttt{\detokenize{\left(x\right)}} & parentheses \\
+\addlinespace[.2em]
+$[x]$ & \texttt{\detokenize{\bracks{x}}} & \texttt{\detokenize{\left[x\right]}} & square brackets \\
+\addlinespace[.2em]
+$\{x\}$ & \texttt{\detokenize{\braces{x}}} & \texttt{\detokenize{\left\{x\right\}}} & braces \\
+\addlinespace[.2em]
+$\langle x\rangle$ & \texttt{\detokenize{\angles{x}}} & \texttt{\detokenize{\left\langle x\right\rangle}} & angle brackets \\
+\addlinespace[.2em]
+$\lvert x\rvert$ & \texttt{\detokenize{\abs{x}}} & \texttt{\detokenize{\lvert x\rvert}} & absolute value \\
+\addlinespace[.2em]
+$\lVert x\rVert$ & \texttt{\detokenize{\norm{x}}} & \texttt{\detokenize{\lVert x\rVert}} & norm \\
+\addlinespace[.2em]
+$\lceil x\rceil$ & \texttt{\detokenize{\ceil{x}}} & \texttt{\detokenize{\left\lceil x\right\rceil}} & ceiling \\
+\addlinespace[.2em]
+$\lfloor x\rfloor$ & \texttt{\detokenize{\floor{x}}} & \texttt{\detokenize{\left\lfloor x\right\rfloor}} & floor \\
+\addlinespace[.2em]
+$\{x,y\}$ & \texttt{\detokenize{\set{x,y}}} & \texttt{\detokenize{\left\{x,y\right\}}} & set \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Logic}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\vdash$ & \texttt{\detokenize{\proves}} & \texttt{\detokenize{\vdash}} & syntactic derivability \\
+\addlinespace[.2em]
+$\nvdash$ & \texttt{\detokenize{\notproves}} & \texttt{\detokenize{\nvdash}} & non-derivability \\
+\addlinespace[.2em]
+$\vDash$ & \texttt{\detokenize{\entails}} & \texttt{\detokenize{\vDash}} & semantic consequence \\
+\addlinespace[.2em]
+$\nvDash$ & \texttt{\detokenize{\notentails}} & \texttt{\detokenize{\nvDash}} & non-entailment \\
+\addlinespace[.2em]
+$\models$ & \texttt{\detokenize{\satisfies}} & \texttt{\detokenize{\models}} & truth in one structure \\
+\addlinespace[.2em]
+$\not\models$ & \texttt{\detokenize{\notsatisfies}} & \texttt{\detokenize{\not\models}} & non-satisfaction \\
+\addlinespace[.2em]
+$\Vdash$ & \texttt{\detokenize{\forces}} & \texttt{\detokenize{\Vdash}} & forcing \\
+\addlinespace[.2em]
+$\nVdash$ & \texttt{\detokenize{\notforces}} & \texttt{\detokenize{\nVdash}} & non-forcing \\
+\addlinespace[.2em]
+$\bot$ & \texttt{\detokenize{\contradiction}} & \texttt{\detokenize{\bot}} & contradiction \\
+\addlinespace[.2em]
+$\Longrightarrow\bot$ & \texttt{\detokenize{\impliesbottom}} & \texttt{\detokenize{\Longrightarrow\bot}} & implication to bottom \\
+\addlinespace[.2em]
+$\Longrightarrow\bot$ & \texttt{\detokenize{\impliesbot}} & \texttt{\detokenize{\Longrightarrow\bot}} & alias \\
+\addlinespace[.2em]
+$\bot$ & \texttt{\detokenize{\bottom}} & \texttt{\detokenize{\bot}} & bottom \\
+\addlinespace[.2em]
+$\top$ & \texttt{\detokenize{\yippee}} & \texttt{\detokenize{\top}} & top \\
+\addlinespace[.2em]
+$p\Vdash_P\varphi$ & \texttt{\detokenize{\forcesP{P}{p}{\varphi}}} & \texttt{\detokenize{p\Vdash_P\varphi}} & forcing indexed by poset \\
+\addlinespace[.2em]
+$\Gamma\vdash_S\Delta$ & \texttt{\detokenize{\turnstile[S]{\Gamma}{\Delta}}} & \texttt{\detokenize{\Gamma\vdash_S\Delta}} & labeled sequent \\
+\addlinespace[.2em]
+$\vdash$ & \texttt{\detokenize{\fCenter}} & \texttt{\detokenize{\vdash}} & bussproofs center symbol \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Metavariables}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\mathcal{V}$ & \texttt{\detokenize{\Var}} & \texttt{\detokenize{\mathcal{V}}} & variables \\
+\addlinespace[.2em]
+$\mathcal{F}$ & \texttt{\detokenize{\Frm}} & \texttt{\detokenize{\mathcal{F}}} & formulas \\
+\addlinespace[.2em]
+$\mathcal{M}$ & \texttt{\detokenize{\Str}} & \texttt{\detokenize{\mathcal{M}}} & structure \\
+\addlinespace[.2em]
+$\mathcal{L}$ & \texttt{\detokenize{\Lang}} & \texttt{\detokenize{\mathcal{L}}} & language \\
+\addlinespace[.2em]
+$\mathrm{Th}$ & \texttt{\detokenize{\Th}} & \texttt{\detokenize{\mathrm{Th}}} & theory \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Maps and arrows}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\rightarrowtail$ & \texttt{\detokenize{\inj}} & \texttt{\detokenize{\rightarrowtail}} & injection \\
+\addlinespace[.2em]
+$\twoheadrightarrow$ & \texttt{\detokenize{\surj}} & \texttt{\detokenize{\twoheadrightarrow}} & surjection \\
+\addlinespace[.2em]
+$\hookrightarrow$ & \texttt{\detokenize{\incl}} & \texttt{\detokenize{\hookrightarrow}} & inclusion map \\
+\addlinespace[.2em]
+$\not\hookrightarrow$ & \texttt{\detokenize{\notincl}} & \texttt{\detokenize{\not\hookrightarrow}} & not inclusion map \\
+\addlinespace[.2em]
+$\xrightarrow{\sim}$ & \texttt{\detokenize{\isoarrow}} & \texttt{\detokenize{\xrightarrow{\sim}}} & isomorphism arrow \\
+\addlinespace[.2em]
+$\leftrightarrow$ & \texttt{\detokenize{\bij}} & \texttt{\detokenize{\leftrightarrow}} & bijection-exists convention \\
+\addlinespace[.2em]
+$\rightarrowtail\!\twoheadrightarrow$ & \texttt{\detokenize{\isbij}} & \texttt{\detokenize{\rightarrowtail\mkern-14.75mu\twoheadrightarrow}} & composite bijection arrow \\
+\addlinespace[.2em]
+$\Longleftrightarrow$ & \texttt{\detokenize{\iffarrow}} & \texttt{\detokenize{\Longleftrightarrow}} & logical iff \\
+\addlinespace[.2em]
+$\hookrightarrow\!\twoheadrightarrow$ & \texttt{\detokenize{\barbbij}} & \texttt{\detokenize{\mathrlap{\hookrightarrow}\mkern4.5mu\twoheadrightarrow}} & barbed bijection \\
+\addlinespace[.2em]
+$\not\hookrightarrow\!\twoheadrightarrow$ & \texttt{\detokenize{\notbarbbij}} & \texttt{\detokenize{\not\!(\mathrlap{\hookrightarrow}\mkern4.5mu\twoheadrightarrow)}} & negated barbed bijection \\
+\addlinespace[.2em]
+$\leftrightarrow$ & \texttt{\detokenize{\hbij}} & \texttt{\detokenize{\rotatebox{180}{\hookrightarrow}\ \hookrightarrow}} & hooked two-way arrow \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Coding and vectors}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\ulcorner\varphi\urcorner$ & \texttt{\detokenize{\gcode{\varphi}}} & \texttt{\detokenize{\ulcorner\varphi\urcorner}} & Gödel corners \\
+\addlinespace[.2em]
+$\ulcorner$ & \texttt{\detokenize{\gcodel}} & \texttt{\detokenize{\ulcorner}} & left corner \\
+\addlinespace[.2em]
+$\urcorner$ & \texttt{\detokenize{\gcoder}} & \texttt{\detokenize{\urcorner}} & right corner \\
+\addlinespace[.2em]
+$\llcorner\varphi\lrcorner$ & \texttt{\detokenize{\gfloor{\varphi}}} & \texttt{\detokenize{\llcorner\varphi\lrcorner}} & lower corners \\
+\addlinespace[.2em]
+$\ulcorner\varphi\urcorner$ & \texttt{\detokenize{\tarski{\varphi}}} & \texttt{\detokenize{\ulcorner\varphi\urcorner}} & coding alias \\
+\addlinespace[.2em]
+$\overset{\rightharpoonup}{v}$ & \texttt{\detokenize{\harpvec{v}}} & \texttt{\detokenize{\accentset{\rightharpoonup}{v}}} & harpoon vector \\
+\addlinespace[.2em]
+$\overset{\rightharpoonup}{\mathbf0}$ & \texttt{\detokenize{\zerovec}} & \texttt{\detokenize{\accentset{\rightharpoonup}{\mathbf0}}} & zero vector \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Kripke and structures}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\langle a,b\rangle$ & \texttt{\detokenize{\tuple{a,b}}} & \texttt{\detokenize{\langle a,b\rangle}} & tuple \\
+\addlinespace[.2em]
+$\langle A,R\rangle$ & \texttt{\detokenize{\struc{A,R}}} & \texttt{\detokenize{\langle A,R\rangle}} & structure \\
+\addlinespace[.2em]
+$\succeq$ & \texttt{\detokenize{\kripkesucceq}} & \texttt{\detokenize{\succeq}} & accessibility orientation \\
+\addlinespace[.2em]
+$\succ$ & \texttt{\detokenize{\kripkesucc}} & \texttt{\detokenize{\succ}} & strict accessibility \\
+\addlinespace[.2em]
+$\preceq$ & \texttt{\detokenize{\kripkepreceq}} & \texttt{\detokenize{\preceq}} & converse \\
+\addlinespace[.2em]
+$\prec$ & \texttt{\detokenize{\kripkeprec}} & \texttt{\detokenize{\prec}} & strict converse \\
+\addlinespace[.2em]
+$\mathcal W$ & \texttt{\detokenize{\Worlds}} & \texttt{\detokenize{\mathcal W}} & worlds; kripke option \\
+\addlinespace[.2em]
+$\succeq$ & \texttt{\detokenize{\Acc}} & \texttt{\detokenize{\succeq}} & legacy alias; kripke option \\
+\addlinespace[.2em]
+$\mathcal F$ & \texttt{\detokenize{\Frame}} & \texttt{\detokenize{\mathcal F}} & frame; kripke option \\
+\addlinespace[.2em]
+$\mathcal M$ & \texttt{\detokenize{\Model}} & \texttt{\detokenize{\mathcal M}} & model; kripke option \\
+\addlinespace[.2em]
+$\langle W,R\rangle$ & \texttt{\detokenize{\kripkeframe{W}{R}}} & \texttt{\detokenize{\langle W,R\rangle}} & frame; kripke option \\
+\addlinespace[.2em]
+$\langle W,R,V\rangle$ & \texttt{\detokenize{\kripkemodel{W}{R}{V}}} & \texttt{\detokenize{\langle W,R,V\rangle}} & model; kripke option \\
+\addlinespace[.2em]
+$\succ$ & \texttt{\detokenize{\AccS}} & \texttt{\detokenize{\succ}} & strict legacy alias \\
+\addlinespace[.2em]
+$\preceq$ & \texttt{\detokenize{\AccInv}} & \texttt{\detokenize{\preceq}} & converse legacy alias \\
+\addlinespace[.2em]
+$\prec$ & \texttt{\detokenize{\AccInvS}} & \texttt{\detokenize{\prec}} & strict converse legacy alias \\
+\addlinespace[.2em]
+$\geqslant$ & \texttt{\detokenize{\gecurly}} & \texttt{\detokenize{\geqslant}} & slanted greater-or-equal \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Blackboard bold}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\mathbb N$ & \texttt{\detokenize{\NN}} & \texttt{\detokenize{\mathbb N}} & naturals \\
+\addlinespace[.2em]
+$\mathbb Z$ & \texttt{\detokenize{\ZZ}} & \texttt{\detokenize{\mathbb Z}} & integers \\
+\addlinespace[.2em]
+$\mathbb Q$ & \texttt{\detokenize{\QQ}} & \texttt{\detokenize{\mathbb Q}} & rationals \\
+\addlinespace[.2em]
+$\mathbb R$ & \texttt{\detokenize{\RR}} & \texttt{\detokenize{\mathbb R}} & reals \\
+\addlinespace[.2em]
+$\mathbb C$ & \texttt{\detokenize{\CC}} & \texttt{\detokenize{\mathbb C}} & complex numbers \\
+\addlinespace[.2em]
+$\mathbb F$ & \texttt{\detokenize{\FF}} & \texttt{\detokenize{\mathbb F}} & field \\
+\addlinespace[.2em]
+$\mathbb P$ & \texttt{\detokenize{\PP}} & \texttt{\detokenize{\mathbb P}} & context-dependent P \\
+\addlinespace[.2em]
+$\mathbb A$ & \texttt{\detokenize{\AAA}} & \texttt{\detokenize{\mathbb A}} & blackboard A \\
+\addlinespace[.2em]
+$\mathbb B$ & \texttt{\detokenize{\BBB}} & \texttt{\detokenize{\mathbb B}} & blackboard B \\
+\addlinespace[.2em]
+$\mathbb S$ & \texttt{\detokenize{\SSS}} & \texttt{\detokenize{\mathbb S}} & blackboard S \\
+\addlinespace[.2em]
+$\mathbb X$ & \texttt{\detokenize{\XXX}} & \texttt{\detokenize{\mathbb X}} & blackboard X \\
+\addlinespace[.2em]
+$\mathbb R$ & \texttt{\detokenize{\Reals}} & \texttt{\detokenize{\mathbb R}} & verbose alias \\
+\addlinespace[.2em]
+$\mathbb N$ & \texttt{\detokenize{\Naturals}} & \texttt{\detokenize{\mathbb N}} & verbose alias \\
+\addlinespace[.2em]
+$\mathbb Z$ & \texttt{\detokenize{\Integers}} & \texttt{\detokenize{\mathbb Z}} & verbose alias \\
+\addlinespace[.2em]
+$\mathbb Q$ & \texttt{\detokenize{\Rationals}} & \texttt{\detokenize{\mathbb Q}} & verbose alias \\
+\addlinespace[.2em]
+$\mathbb C$ & \texttt{\detokenize{\Complexes}} & \texttt{\detokenize{\mathbb C}} & verbose alias \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Alphabets}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\mathcal L$ & \texttt{\detokenize{\MathCal{L}}} & \texttt{\detokenize{\mathcal L}} & calligraphic \\
+\addlinespace[.2em]
+$\mathbb R$ & \texttt{\detokenize{\MathBB{R}}} & \texttt{\detokenize{\mathbb R}} & blackboard bold \\
+\addlinespace[.2em]
+$\mathbf v$ & \texttt{\detokenize{\MathBold{v}}} & \texttt{\detokenize{\mathbf v}} & bold \\
+\addlinespace[.2em]
+$\mathrm{Th}$ & \texttt{\detokenize{\MathRoman{Th}}} & \texttt{\detokenize{\mathrm{Th}}} & upright \\
+\addlinespace[.2em]
+$\mathscr L$ & \texttt{\detokenize{\MathScript{L}}} & \texttt{\detokenize{\mathscr L}} & script; fallback calligraphic \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Model and set theory}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\mathrm{FOL}$ & \texttt{\detokenize{\FOL}} & \texttt{\detokenize{\mathrm{FOL}}} & first-order logic \\
+\addlinespace[.2em]
+$f\upharpoonright_A$ & \texttt{\detokenize{\restrict{f}{A}}} & \texttt{\detokenize{f\!\upharpoonright_A}} & restriction \\
+\addlinespace[.2em]
+$\operatorname{dom}$ & \texttt{\detokenize{\dom}} & \texttt{\detokenize{\operatorname{dom}}} & domain \\
+\addlinespace[.2em]
+$\operatorname{ran}$ & \texttt{\detokenize{\ran}} & \texttt{\detokenize{\operatorname{ran}}} & range \\
+\addlinespace[.2em]
+$\operatorname{field}$ & \texttt{\detokenize{\field}} & \texttt{\detokenize{\operatorname{field}}} & field \\
+\addlinespace[.2em]
+$\operatorname{rank}$ & \texttt{\detokenize{\rank}} & \texttt{\detokenize{\operatorname{rank}}} & rank \\
+\addlinespace[.2em]
+$\operatorname{TC}$ & \texttt{\detokenize{\TC}} & \texttt{\detokenize{\operatorname{TC}}} & transitive closure \\
+\addlinespace[.2em]
+$\operatorname{cf}$ & \texttt{\detokenize{\cf}} & \texttt{\detokenize{\operatorname{cf}}} & cofinality \\
+\addlinespace[.2em]
+$\operatorname{otp}$ & \texttt{\detokenize{\otp}} & \texttt{\detokenize{\operatorname{otp}}} & order type \\
+\addlinespace[.2em]
+$\mathrm{Ord}$ & \texttt{\detokenize{\Ord}} & \texttt{\detokenize{\mathrm{Ord}}} & ordinals \\
+\addlinespace[.2em]
+$\mathcal P(X)$ & \texttt{\detokenize{\Pow{X}}} & \texttt{\detokenize{\mathcal P\!\left(X\right)}} & power set \\
+\addlinespace[.2em]
+$\operatorname{Mod}$ & \texttt{\detokenize{\Mod}} & \texttt{\detokenize{\operatorname{Mod}}} & models operator \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Relations}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$\subseteq$ & \texttt{\detokenize{\containedin}} & \texttt{\detokenize{\subseteq}} & subset or equal \\
+\addlinespace[.2em]
+$\subset$ & \texttt{\detokenize{\propcontainedin}} & \texttt{\detokenize{\subset}} & author-dependent proper subset \\
+\addlinespace[.2em]
+$\subsetneq$ & \texttt{\detokenize{\emphpropcontainedin}} & \texttt{\detokenize{\subsetneq}} & unambiguous proper subset \\
+\addlinespace[.2em]
+$\nsubseteq$ & \texttt{\detokenize{\notcontainedin}} & \texttt{\detokenize{\nsubseteq}} & not subset or equal \\
+\addlinespace[.2em]
+$\not\subset$ & \texttt{\detokenize{\notpropcontainedin}} & \texttt{\detokenize{\not\subset}} & not proper subset \\
+\addlinespace[.2em]
+$\supseteq$ & \texttt{\detokenize{\containedby}} & \texttt{\detokenize{\supseteq}} & superset or equal \\
+\addlinespace[.2em]
+$\supset$ & \texttt{\detokenize{\propcontainedby}} & \texttt{\detokenize{\supset}} & author-dependent proper superset \\
+\addlinespace[.2em]
+$\supsetneq$ & \texttt{\detokenize{\emphpropcontainedby}} & \texttt{\detokenize{\supsetneq}} & unambiguous proper superset \\
+\addlinespace[.2em]
+$\nsupseteq$ & \texttt{\detokenize{\notcontainedby}} & \texttt{\detokenize{\nsupseteq}} & not superset or equal \\
+\addlinespace[.2em]
+$\not\supset$ & \texttt{\detokenize{\notpropcontainedby}} & \texttt{\detokenize{\not\supset}} & not proper superset \\
+\addlinespace[.2em]
+$\cong$ & \texttt{\detokenize{\isoto}} & \texttt{\detokenize{\cong}} & isomorphic \\
+\addlinespace[.2em]
+$\in$ & \texttt{\detokenize{\belongsto}} & \texttt{\detokenize{\in}} & membership \\
+\addlinespace[.2em]
+$\land$ & \texttt{\detokenize{\aand}} & \texttt{\detokenize{\land}} & conjunction \\
+\addlinespace[.2em]
+$\land$ & \texttt{\detokenize{\conjunction}} & \texttt{\detokenize{\land}} & conjunction alias \\
+\addlinespace[.2em]
+$\lor$ & \texttt{\detokenize{\oor}} & \texttt{\detokenize{\lor}} & disjunction \\
+\addlinespace[.2em]
+$\lor$ & \texttt{\detokenize{\disjunction}} & \texttt{\detokenize{\lor}} & disjunction alias \\
+\addlinespace[.2em]
+$\nexists$ & \texttt{\detokenize{\notexists}} & \texttt{\detokenize{\nexists}} & nonexistence \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Proof trees}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+$rule label$ & \texttt{\detokenize{\rlabel{Cut}}} & \texttt{\detokenize{\RightLabel{\scriptsize Cut}}} & rule label helper; prooftrees option \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\WeakL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Weak L)}\UnaryInfC{A}}} & weakening left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\WeakR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Weak R)}\UnaryInfC{A}}} & weakening right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ContrL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Contr L)}\UnaryInfC{A}}} & contraction left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ContrR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Contr R)}\UnaryInfC{A}}} & contraction right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ExchL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Exch L)}\UnaryInfC{A}}} & exchange left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ExchR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Exch R)}\UnaryInfC{A}}} & exchange right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\Cut{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize(Cut)}\BinaryInfC{A}}} & cut \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ImpR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\to$R)}\UnaryInfC{A}}} & implication right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ImpL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\to$L)}\BinaryInfC{A}}} & implication left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\wedge$R)}\BinaryInfC{A}}} & and right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\wedge$L)}\UnaryInfC{A}}} & and left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\OrRone{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\vee$R1)}\UnaryInfC{A}}} & or right 1 \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\OrRtwo{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\vee$R2)}\UnaryInfC{A}}} & or right 2 \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\OrL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\vee$L)}\BinaryInfC{A}}} & or left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\NegR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\neg$R)}\UnaryInfC{A}}} & negation right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\NegL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\neg$L)}\UnaryInfC{A}}} & negation left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\TopR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\top$R)}\UnaryInfC{A}}} & top right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\BotL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\bot$L)}\UnaryInfC{A}}} & bottom left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AllR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\forall$R)}\UnaryInfC{A}}} & forall right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AllL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\forall$L)}\UnaryInfC{A}}} & forall left \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ExR{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\exists$R)}\UnaryInfC{A}}} & exists right \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\ExL{A}}} & \texttt{\detokenize{\RightLabel{\scriptsize($\exists$L)}\UnaryInfC{A}}} & exists left \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Document helpers}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+\textemdash & \texttt{\detokenize{\LogicLegend}} & \texttt{\detokenize{\Gamma\vdash\varphi; \Gamma\vDash\varphi}} & insert relation legend \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\KripkeLegend}} & \texttt{\detokenize{manual explanatory paragraph}} & insert Kripke legend; kripke option \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\IJSection{Heading}}} & \texttt{\detokenize{\section{Heading} plus legends}} & section with optional legends \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Formatting}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+\textemdash & \texttt{\detokenize{\AndyMakeTitle}} & \texttt{\detokenize{manual center environment}} & flexible inline title \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyMakeTitlePage}} & \texttt{\detokenize{titlepage environment}} & separate title page \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyStartBodyPages}} & \texttt{\detokenize{\clearpage\pagenumbering{arabic}\setcounter{page}{0}}} & body pagination \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndySubtitle{Text}}} & \texttt{\detokenize{manual title text}} & optional subtitle \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyCourse{Text}}} & \texttt{\detokenize{manual title text}} & optional course \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyAssignment{Text}}} & \texttt{\detokenize{manual title text}} & optional assignment \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyDue{Text}}} & \texttt{\detokenize{manual title text}} & optional due date \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyAffiliation{Text}}} & \texttt{\detokenize{manual title text}} & optional affiliation \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyTitle[]{A}{1}{Title}{Due}{Name}}} & \texttt{\detokenize{manual center environment}} & legacy six-argument title \\
+\addlinespace[.2em]
+\textsc{WLOG} & \texttt{\detokenize{\WLoG}} & \texttt{\detokenize{\textsc{wlog}}} & without loss of generality \\
+\addlinespace[.2em]
+\textsc{WTS} & \texttt{\detokenize{\WTS}} & \texttt{\detokenize{\textsc{wts}}} & want to show \\
+\addlinespace[.2em]
+\textsc{WRT} & \texttt{\detokenize{\WRT}} & \texttt{\detokenize{\textsc{wrt}}} & with respect to \\
+\addlinespace[.2em]
+\textsc{SFSoC} & \texttt{\detokenize{\SFSoC}} & \texttt{\detokenize{\textsc{sfsoc}}} & suppose for sake of contradiction \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\DearFriends{Name}{Text}}} & \texttt{\detokenize{lettrine and calligra}} & letter opening \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyRunningTitle{Short title}}} & \texttt{\detokenize{fancyhdr running head}} & optional even-page short title \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+
+\section{Environments}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{.13\textwidth}p{.25\textwidth}p{.34\textwidth}p{.22\textwidth}@{}}
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endfirsthead
+\toprule
+Printed & With package & Without package & Use \\
+\midrule
+\endhead
+\textemdash & \texttt{\detokenize{definition / DefinitionBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{lemma / LemmaBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{proposition / PropositionBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{claim / ClaimBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{example / ExampleBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{chaff / ChaffBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{aside / AsideBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{theorem / TheoremBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & separate theorem counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{conjecture / ConjectureBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & separate conjecture counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{corollary / CorollaryBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & roman under theorem \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{proof / ProofBlock}} & \texttt{\detokenize{amsthm proof / thin separators}} & page-break-friendly \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{remark / RemarkBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{note / NoteBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{exercise / ExerciseBlock}} & \texttt{\detokenize{amsthm newtheorem / breakable tcolorbox}} & shared subsection counter \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{ntheorem / nlemma / ndefinition}} & \texttt{\detokenize{theorem / lemma / definition}} & legacy aliases \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{nproposition / ncorollary / nremark}} & \texttt{\detokenize{proposition / corollary / remark}} & legacy aliases \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{nchaff / naside / nclaim}} & \texttt{\detokenize{chaff / aside / claim}} & legacy aliases \\
+\addlinespace[.2em]
+\bottomrule
+\end{longtable}
+\end{document}

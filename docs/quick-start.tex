@@ -1,0 +1,108 @@
+\documentclass[11pt,letterpaper,twoside]{article}
+\usepackage[margin=.9in,headheight=40pt]{geometry}
+\usepackage[kripke]{andyspackage}
+\usepackage[header=book,font=times,accent=purple]{andysnotes}
+\title{Andy's Package}
+\AndySubtitle{Quick start and notation guide}
+\author{Andrew M. Hagy}
+\date{September 2026}
+\begin{document}
+\setcounter{page}{0}
+\AndyMakeTitle
+
+\section{Start a document}
+Copy the master Overleaf project. Its root contains \texttt{main.tex}
+and the three style files. Edit \texttt{main.tex}; there is no need to
+import the packages into every new project.
+
+Select one notation line and one style line in the preamble. A percent
+sign comments out a line; move it so that exactly one style line is active.
+The default is a portable Times-family face, purple accents, and
+alternating running headers on facing pages. Overleaf's pdfLaTeX
+compiler works for this default.
+\begin{Verbatim}[fontsize=\small]
+\usepackage{andyspackage}
+% \usepackage[kripke]{andyspackage}
+% \usepackage[kripke,prooftrees]{andyspackage}
+
+\usepackage[header=book,font=times]{andysnotes}
+% \usepackage[header=plain,font=times]{andysnotes}
+% \usepackage[header=none,font=times]{andysnotes}
+% \usepackage{andyspics}
+\end{Verbatim}
+The \texttt{book} header alternates a running title and the page
+number with a double rule; \texttt{plain} uses a simple running header;
+\texttt{none} removes both. The first content page is numbered 0
+by the starter file. Change \verb|\setcounter{page}{0}| to 1 if
+a conventional first page suits the project.
+
+\section{Choose only the title fields you need}
+A title and author suffice. The subtitle, course, assignment, due
+date, and affiliation are independent optional commands. Use
+\verb|\AndyMakeTitle| for a title above the first section, or
+\verb|\AndyMakeTitlePage| for a separate cover. Uncomment
+\verb|\tableofcontents| only when useful.
+\begin{Verbatim}[fontsize=\small]
+\title{A Working Title}
+\author{Andrew M. Hagy}
+\date{}
+% \AndyCourse{PHIL 4770}
+% \AndyDue{Friday, October 2, 2026}
+\begin{document}
+\setcounter{page}{0}
+\AndyMakeTitle
+% \tableofcontents
+\section{Introduction}
+\subsection{First idea}
+\end{document}
+\end{Verbatim}
+Section headings are unnumbered on the page, but they advance the
+section counter. Thus the first subsection prints \textbf{1.1},
+and the first definition there prints \textbf{1.1.1}. A definition,
+lemma, proposition, claim, example, remark, note, exercise, chaff,
+or aside takes the next number in this shared sequence. Theorems and
+conjectures have separate global sequences. A corollary after
+Theorem 1 prints \textbf{Corollary 1.i}.
+
+\section{Write with the notation}
+\[
+  \Gamma\proves\varphi,\qquad
+  \Gamma\entails\varphi,\qquad
+  \Str\satisfies\varphi,\qquad
+  w\forces\varphi,\qquad
+  \RR\subseteq\CC.
+\]
+The source of that line uses the meaningful names
+\verb|\proves|, \verb|\entails|, \verb|\satisfies|,
+\verb|\forces|, \verb|\RR|, and \verb|\CC|.
+The full source-to-symbol-to-standard-LaTeX map is in
+\texttt{docs/cheatsheet.md}.
+
+Use \verb|\begin{DefinitionBlock}| to highlight a statement;
+the unboxed \verb|definition| advances the same counter. A
+\verb|ProofBlock| uses thin separator lines inside a theorem
+rather than a second full frame. This lets long proofs cross
+a page without being moved intact to the next sheet.
+The abbreviations \WLoG, \WTS, \WRT, and \SFSoC{}
+retain their small-cap styling.
+
+\section{Prompt for transcribing handwritten notes}
+Copy the text below into a chat when asking an LLM to typeset your
+notes. The editable source is \path{docs/llm-prompt.txt}; the cheat
+sheet points back to the same file.
+\VerbatimInput[fontsize=\footnotesize]{docs/llm-prompt.txt}
+
+\section{Citations and bibliography}
+Footnotes are useful for comments on the text and can contain a
+citation. For a short handout, keep references in \texttt{main.tex}
+with \verb|\bibitem|. For an Angus-inspired
+alphabetic bibliography, turn on the optional bibliography
+setting in \texttt{andysnotes} and add a \texttt{references.bib}
+file; see \path{docs/bibliography-biblatex.tex}. The same
+\verb|\cite{key}| works in both cases. A journal or instructor's
+required reference style takes precedence.
+
+\clearpage
+\appendix
+\input{docs/symbols.tex}
+\end{document}

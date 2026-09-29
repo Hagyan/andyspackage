@@ -1,0 +1,48 @@
+\section{Definitions of symbols}
+
+This appendix distinguishes the mathematical relations named in the
+package. The descriptions are conventions for these notes, not claims
+that every author uses the same symbols.
+
+\begin{description}[leftmargin=2.8em,style=nextline]
+\item[$\in$] Membership: $x\in A$ says that $x$ is an element of $A$.
+\item[$\subseteq$] Inclusion: $A\subseteq B$ allows $A=B$.
+\item[$\subsetneq$] Proper inclusion: $A\subsetneq B$ requires
+  $A\subseteq B$ and $A\ne B$. The bare symbol $\subset$ is used
+  differently by different authors; prefer $\emphpropcontainedin$ when
+  strictness matters.
+\item[$\vdash$] Syntactic derivability: $\Gamma\proves\varphi$
+  states that a proof of $\varphi$ from $\Gamma$ exists in the chosen
+  deductive system.
+\item[$\vDash$] Semantic consequence: $\Gamma\entails\varphi$
+  states that every relevant structure satisfying $\Gamma$ also
+  satisfies $\varphi$.
+\item[$\models$] Satisfaction: $\Str\satisfies\varphi$ says that a
+  particular structure $\Str$ satisfies $\varphi$. The glyph closely
+  resembles or coincides with the previous one; the custom command
+  records which relation is intended.
+\item[$\Vdash$] Forcing: $w\forces\varphi$ uses the forcing relation
+  appropriate to the stated Kripke or poset semantics.
+\item[$\succeq$] Accessibility in the chosen Kripke orientation,
+  written \verb|\kripkesucceq|. The legacy \verb|\Acc| is available
+  with the \verb|[kripke]| option. Peano successor remains $S$ and
+  is not assigned this relation symbol.
+\item[$\geqslant$] Slanted greater-than-or-equal, written
+  \verb|\gecurly|. This is an order glyph, not the Kripke relation.
+\item[$\langle A,R\rangle$] A displayed structure or tuple.
+  \verb|\struc{A,R}| and \verb|\tuple{A,R}| print the same brackets
+  while recording the intended role in source.
+\end{description}
+
+\subsection{A two-item check}
+Decide whether each statement is true or false:
+\[
+  \text{(1) }\emptyset\in\emptyset,
+  \qquad
+  \text{(2) }\emptyset\subset\emptyset.
+\]
+The first is false: the empty set has no elements. The second depends
+on the author's convention for $\subset$: it is true if equality is
+allowed and false if strict inclusion is intended. Written without
+ambiguity, $\emptyset\subseteq\emptyset$ is true and
+$\emptyset\subsetneq\emptyset$ is false.
