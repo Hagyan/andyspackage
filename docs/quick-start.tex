@@ -5,7 +5,7 @@
 \title{Andy's Package}
 \AndySubtitle{Quick start and notation guide}
 \author{Andrew M. Hagy}
-\date{September 2026}
+\date{October 2026}
 \begin{document}
 \setcounter{page}{0}
 \AndyMakeTitle
@@ -27,13 +27,20 @@ compiler works for this default.
 
 \usepackage[header=book,font=times]{andysnotes}
 % \usepackage[header=plain,font=times]{andysnotes}
+% \usepackage[header=minimal,font=times]{andysnotes}
 % \usepackage[header=none,font=times]{andysnotes}
+% \usepackage[header=plain,font=typewriter,accent=black,
+%   sectionrules=false]{andysnotes}
 % \usepackage{andyspics}
 \end{Verbatim}
-The \texttt{book} header alternates a running title and the page
-number with a double rule; \texttt{plain} uses a simple running header;
-\texttt{none} removes both. The first content page is numbered 0
-by the starter file. Change \verb|\setcounter{page}{0}| to 1 if
+The \texttt{book} header alternates section and title text above a double
+rule; \texttt{plain} uses a simple running header; \texttt{minimal} shows
+title, author, class, date, and the current section index; \texttt{none}
+removes the running header. All four styles keep the page number in the footer.
+Add \texttt{studentid=true} to the package options and set
+\verb|\AndyStudentID{...}| to show a student ID in the minimal header.
+The first content page is numbered 0 by the starter file. Change
+\verb|\setcounter{page}{0}| to 1 if
 a conventional first page suits the project.
 
 \section{Choose only the title fields you need}
@@ -76,7 +83,10 @@ The source of that line uses the meaningful names
 \verb|\proves|, \verb|\entails|, \verb|\satisfies|,
 \verb|\forces|, \verb|\RR|, and \verb|\CC|.
 The full source-to-symbol-to-standard-LaTeX map is in
-\texttt{docs/cheatsheet.md}.
+\texttt{docs/cheatsheet.md}. Times remains the default font. Select
+\texttt{font=typewriter} for the alternate inspired by typewritten
+mathematics dissertations: monospaced prose with traditional mathematical
+symbols and more generous line spacing.
 
 Use \verb|\begin{DefinitionBlock}| to highlight a statement;
 the unboxed \verb|definition| advances the same counter. A
@@ -85,6 +95,45 @@ rather than a second full frame. This lets long proofs cross
 a page without being moved intact to the next sheet.
 The abbreviations \WLoG, \WTS, \WRT, and \SFSoC{}
 retain their small-cap styling.
+
+\section{Choose proof marks and provenance}
+Ordinary proofs end with a striped tombstone labelled \texttt{QED}.
+A hollow tombstone means quoted from or closely following a source, a
+striped tombstone means a general proof, and a solid purple tombstone marks
+a highly original contribution. The tag below it records provenance:
+\texttt{QED} is human proof, \texttt{XM} is \emph{Ex machina}, and
+\texttt{AXM} is \emph{Auxilium ex machina}.
+\begin{Verbatim}[fontsize=\small]
+\AndyBookMark[QED]
+\AndyGeneralMark[AXM]
+\AndyOriginalMark[QED]
+\AndyTombstoneFootnote
+\end{Verbatim}
+For the two directions of a biconditional, use:
+\begin{Verbatim}[fontsize=\small]
+\begin{IffForwardProof}[QED]
+Assume $P$ and prove $Q$.
+\end{IffForwardProof}
+\begin{IffBackwardProof}[AXM]
+Assume $Q$ and prove $P$.
+\end{IffBackwardProof}
+\end{Verbatim}
+Each environment ends with a half-striped tombstone and a directional arrow.
+
+For casework, give the number of cases once. The environment prints
+``Proceed by cases.'' and numbers cases with lowercase Roman numerals.
+The tombstone fill advances from left to right.
+\begin{Verbatim}[fontsize=\small]
+\begin{CaseProof}{3}
+  \begin{AndyCase}First case.\end{AndyCase}
+  \begin{AndyCase}Second case.\end{AndyCase}
+  \begin{AndyCase}Third case.\end{AndyCase}
+\end{CaseProof}
+\end{Verbatim}
+Use \verb|\AndyProofNotationAppendix| for the long explanatory note and
+\verb|\AndyOrnamentBreak| for the optional Angus-inspired divider. The
+living conventions and image-inclusion example are in
+\path{docs/ETIQUETTE.md}.
 
 \section{Prompt for transcribing handwritten notes}
 Copy the text below into a chat when asking an LLM to typeset your
@@ -106,3 +155,4 @@ required reference style takes precedence.
 \appendix
 \input{docs/symbols.tex}
 \end{document}
+

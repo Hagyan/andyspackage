@@ -506,6 +506,24 @@ Printed & With package & Without package & Use \\
 \addlinespace[.2em]
 \textemdash & \texttt{\detokenize{\AndyRunningTitle{Short title}}} & \texttt{\detokenize{fancyhdr running head}} & optional even-page short title \\
 \addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyStudentID{Text}}} & \texttt{\detokenize{manual header text}} & optional student ID; display with studentid=true \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyBookMark[QED]}} & \texttt{\detokenize{manual TikZ tombstone}} & hollow: quoted from or closely follows a source \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyGeneralMark[AXM]}} & \texttt{\detokenize{manual TikZ tombstone}} & striped: general proof; optional provenance tag \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyOriginalMark[QED]}} & \texttt{\detokenize{manual TikZ tombstone}} & solid purple: highly original contribution \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyProofMark[Tag]{style}}} & \texttt{\detokenize{manual TikZ tombstone}} & low-level hollow/general/solid proof mark \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyCaseProgressMark{1}{3}}} & \texttt{\detokenize{manual TikZ tombstone}} & low-level completed/total case marker \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyTombstoneFootnote}} & \texttt{\detokenize{manual footnote}} & short proof-mark and provenance explanation \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyProofNotationAppendix}} & \texttt{\detokenize{manual section text}} & long proof-mark and provenance explanation \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{\AndyOrnamentBreak}} & \texttt{\detokenize{manual ornament and rules}} & Angus-inspired decorative divider \\
+\addlinespace[.2em]
 \bottomrule
 \end{longtable}
 
@@ -553,6 +571,10 @@ Printed & With package & Without package & Use \\
 \textemdash & \texttt{\detokenize{nproposition / ncorollary / nremark}} & \texttt{\detokenize{proposition / corollary / remark}} & legacy aliases \\
 \addlinespace[.2em]
 \textemdash & \texttt{\detokenize{nchaff / naside / nclaim}} & \texttt{\detokenize{chaff / aside / claim}} & legacy aliases \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{IffForwardProof / IffBackwardProof}} & \texttt{\detokenize{amsthm proof with custom qedsymbol}} & biconditional directions; optional provenance tag \\
+\addlinespace[.2em]
+\textemdash & \texttt{\detokenize{CaseProof / AndyCase}} & \texttt{\detokenize{manual case list with progress marks}} & automatic “Proceed by cases” and progressive tombstones \\
 \addlinespace[.2em]
 \bottomrule
 \end{longtable}

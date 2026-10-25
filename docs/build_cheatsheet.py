@@ -38,7 +38,8 @@ out = [
 ]
 current = None
 nonmath = {"rule", "text", "heading", "title", "title page", "page 0", "header",
-           "metadata", "WLOG", "WTS", "WRT", "SFSoC", "drop cap", "statement", "proof"}
+           "metadata", "WLOG", "WTS", "WRT", "SFSoC", "drop cap", "statement", "proof",
+           "proof mark", "footnote"}
 for category, source, display, ordinary, meaning in rows:
     if category != current:
         if current is not None:
@@ -116,7 +117,7 @@ for file in ("andyspackage.sty", "andysnotes.sty"):
         name = a or b
         if "@" not in name and name not in {
             "sectionmark", "subsectionmark", "headrulewidth", "headrule",
-            "thedefinition", "thecorollary", "qedsymbol",
+            "footrulewidth", "familydefault", "thedefinition", "thecorollary", "qedsymbol",
         }:
             public.add(name)
 listed = set()
@@ -128,3 +129,4 @@ missing = public - listed
 if missing:
     raise SystemExit("Unlisted public commands: " + ", ".join(sorted(missing)))
 print(f"{len(rows)} documented rows; all {len(public)} public commands covered.")
+

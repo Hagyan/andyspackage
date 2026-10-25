@@ -255,6 +255,15 @@ Return the complete main.tex and a brief list of required project files.
 | SFSoC | `\SFSoC` | `\textsc{sfsoc}` | suppose for sake of contradiction |
 | — | `\DearFriends{Name}{Text}` | `lettrine and calligra` | letter opening |
 | — | `\AndyRunningTitle{Short title}` | `fancyhdr running head` | optional even-page short title |
+| — | `\AndyStudentID{Text}` | `manual header text` | optional student ID; display with studentid=true |
+| — | `\AndyBookMark[QED]` | `manual TikZ tombstone` | hollow: quoted from or closely follows a source |
+| — | `\AndyGeneralMark[AXM]` | `manual TikZ tombstone` | striped: general proof; optional provenance tag |
+| — | `\AndyOriginalMark[QED]` | `manual TikZ tombstone` | solid purple: highly original contribution |
+| — | `\AndyProofMark[Tag]{style}` | `manual TikZ tombstone` | low-level hollow/general/solid proof mark |
+| — | `\AndyCaseProgressMark{1}{3}` | `manual TikZ tombstone` | low-level completed/total case marker |
+| — | `\AndyTombstoneFootnote` | `manual footnote` | short proof-mark and provenance explanation |
+| — | `\AndyProofNotationAppendix` | `manual section text` | long proof-mark and provenance explanation |
+| — | `\AndyOrnamentBreak` | `manual ornament and rules` | Angus-inspired decorative divider |
 
 ## Environments
 
@@ -277,3 +286,5 @@ Return the complete main.tex and a brief list of required project files.
 | — | `ntheorem / nlemma / ndefinition` | `theorem / lemma / definition` | legacy aliases |
 | — | `nproposition / ncorollary / nremark` | `proposition / corollary / remark` | legacy aliases |
 | — | `nchaff / naside / nclaim` | `chaff / aside / claim` | legacy aliases |
+| — | `IffForwardProof / IffBackwardProof` | `amsthm proof with custom qedsymbol` | biconditional directions; optional provenance tag |
+| — | `CaseProof / AndyCase` | `manual case list with progress marks` | automatic “Proceed by cases” and progressive tombstones |
