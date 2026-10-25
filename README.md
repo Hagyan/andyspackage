@@ -11,6 +11,8 @@ A modular LaTeX starter for Andrew M. Hagy's mathematics and logic writing.
 - docs/cheatsheet.md and docs/cheatsheet.pdf: custom source, rendered
   symbol, and ordinary LaTeX, generated from docs/commands.psv.
 - docs/llm-prompt.txt: reusable instruction for transcribing notes.
+- docs/ETIQUETTE.md: living writing, notation, proof-mark, and workflow preferences.
+- examples/proof-marks.tex: examples of direction proofs, casework, and tombstones.
 - notes/problems.tex: an uncompiled historical design note. Its final
   command is incomplete; do not input it into a document.
 - beamer/README.md: reserved for a future slide theme.
@@ -23,15 +25,27 @@ a portable Times-family font, purple accents, invisible section numbers,
 visible subsection numbers, and facing-page headers. Recompile.
 
 Keep one master Overleaf project and use Copy Project for a new
-assignment. Every copy contains the styles. When you revise a package,
-copy its updated .sty file into older projects that need the revision;
-existing copies do not automatically track the master.
+assignment. Every copy contains the styles. When you revise a package, copy its updated .sty file into older projects
+that need the revision; existing copies do not automatically track the master.
+To publish a local edit, commit and push it to the repository. In Overleaf,
+replace the matching file in the project with the updated version and recompile.
 
 In main.tex, leave one notation line and one style line uncommented.
-The lines for book, plain, and no header are ready for selection by
-moving the percent sign. The course, assignment, due date, subtitle,
+The lines for book, plain, minimal, and no header are ready for selection by
+moving the percent sign. The minimal header shows title, author, date, current
+section index, and class; add `studentid=true` and set
+`\AndyStudentID{...}` to show a student ID. Page numbers remain in the footer
+when `header=none`. The course, assignment, due date, subtitle,
 contents, title page, bibliography, and graphics are independent choices.
 A zero-indexed page counter is shown by default.
+
+## Proof marks and style preferences
+
+See [docs/ETIQUETTE.md](docs/ETIQUETTE.md) for the living style guide and
+[examples/proof-marks.tex](examples/proof-marks.tex) for the tombstone API.
+The default font remains Times. Use `font=typewriter` for the alternate inspired
+by the supplied 1967 dissertation; this pairs typewritten prose with traditional
+mathematical symbols while preserving Times as the default.
 
 ## Existing documents
 
@@ -67,3 +81,4 @@ manual thebibliography list is also available in main.tex.
 
 This is a reviewable working version. Package and title names can be
 revised before the first public release.
+

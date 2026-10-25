@@ -10,10 +10,14 @@
 % STYLE: leave exactly one of these lines uncommented.
 \usepackage[header=book,font=times,accent=purple]{andysnotes}
 % \usepackage[header=plain,font=times,accent=purple]{andysnotes}
+% \usepackage[header=minimal,font=times,accent=purple]{andysnotes}
 % \usepackage[header=none,font=times,accent=purple]{andysnotes}
 % \usepackage[header=book,font=latinmodern,accent=black,sectionrules=false]{andysnotes}
 % \usepackage[header=book,font=times,bibliography=angus]{andysnotes}
 % Add showsectionnumbers=true to print main section numbers.
+% Add studentid=true to the package options and set \AndyStudentID{...}
+% to display a student ID in the minimal header. The default is off.
+% Use font=typewriter for the 1967 dissertation-inspired alternate; Times stays default.
 % If bibliography=angus is active, add after the selected style line:
 % \addbibresource{docs/references.bib}
 
@@ -31,6 +35,8 @@
 % \AndyDue{Friday, October 2, 2026}
 % \AndyAffiliation{University of Pennsylvania}
 % \AndyRunningTitle{Short title for even-page headers}
+% \AndyStudentID{1234567} % shown only with studentid=true
+% Add \AndyOrnamentBreak between sections for Angus's ornate divider.
 
 \begin{document}
 \setcounter{page}{0} % change to 1 if desired
@@ -74,3 +80,4 @@ In particular, $A\containedin A$.
 % \end{thebibliography}
 % Or, with bibliography=angus: \printbibliography
 \end{document}
+
