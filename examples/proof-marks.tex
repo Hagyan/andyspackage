@@ -1,0 +1,34 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in,headheight=40pt]{geometry}
+\usepackage{andyspackage}
+\usepackage[header=minimal,font=times,accent=purple]{andysnotes}
+% Add studentid=true to the options and \AndyStudentID{...} if desired.
+\title{Proof Presentation Examples}
+\author{Andrew M. Hagy}
+\date{\today}
+\AndyCourse{Sample class}
+\begin{document}
+\AndyMakeTitle
+\section{Biconditional}
+\begin{IffForwardProof}[QED]
+Assume $P$ and prove $Q$.
+\end{IffForwardProof}
+\begin{IffBackwardProof}[AXM]
+Assume $Q$ and prove $P$.
+\end{IffBackwardProof}
+\section{Casework}
+\begin{CaseProof}{3}
+\begin{AndyCase}
+First case.
+\end{AndyCase}
+\begin{AndyCase}
+Second case.
+\end{AndyCase}
+\begin{AndyCase}
+Third case.
+\end{AndyCase}
+\end{CaseProof}
+\AndyProofNotationAppendix
+\AndyOrnamentBreak
+\end{document}
+
